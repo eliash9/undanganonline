@@ -84,7 +84,7 @@ window.INVITATION_CONFIG = {
     { title: 'Lamaran', time: '2024', text: 'Prosesi lamaran sederhana bersama keluarga terdekat.' }
   ],
   contact: {
-    footerText: 'Kontak keluarga: 0812-0000-XXXX | IG: @pinanti.bayu',
+    footerText: 'Kontak keluarga: 0812-34567-890 | IG: @pinanti.bayu',
     credit: 'Foto: Unsplash · Musik: Pixabay (royalty‑free)'
   },
   integrations: {
