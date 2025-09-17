@@ -32,6 +32,7 @@
       <div class="cover-content">
         <img src="assets/img/monogram.svg" alt="Monogram" class="monogram" />
         <h1 class="names"><span id="brideName">Pinanti</span> & <span id="groomName">Bayu</span></h1>
+        <div class="ornament" aria-hidden="true"></div>
         <p class="date" id="weddingDateText">Sabtu, 11 Oktober 2025</p>
         <button id="open-invitation" class="btn btn-primary">Buka Undangan</button>
       </div>
@@ -45,7 +46,7 @@
     <section id="countdown" class="section" aria-label="Hitung Mundur">
       <div class="container reveal">
         <h2 class="title">Menuju Hari Bahagia</h2>
-        <div class="countdown-grid" data-target-date="2025-10-11T08:00:00+07:00">
+        <div class="countdown-grid" id="countdownGrid" data-target-date="2025-10-11T08:00:00+07:00">
           <div class="time"><span id="d">00</span><small>Hari</small></div>
           <div class="time"><span id="h">00</span><small>Jam</small></div>
           <div class="time"><span id="m">00</span><small>Menit</small></div>
@@ -60,16 +61,16 @@
         <h2 class="title">Mempelai</h2>
         <div class="couple-grid">
           <article class="person">
-            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Foto mempelai wanita (stock Unsplash)" loading="lazy" />
-            <h3>Retno Pinanti Khairunnisa</h3>
-            <p>Putri dari Bapak Karyono dan Ibu Rosyidah</p>
-            <p class="muted">Jl. Puntodewo No.1 Panjunan RT 01 RW 01, Pati, Pati</p>
+            <img id="bridePhoto" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Foto mempelai wanita (stock Unsplash)" loading="lazy" />
+            <h3 id="brideFullName">Retno Pinanti Khairunnisa</h3>
+            <p id="brideParents">Putri dari Bapak Karyono dan Ibu Rosyidah</p>
+            <p class="muted" id="brideOrigin">Jl. Puntodewo No.1 Panjunan RT 01 RW 01, Pati, Pati</p>
           </article>
           <article class="person">
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80" alt="Foto mempelai pria (stock Unsplash)" loading="lazy" />
-            <h3>Bayu Sidiq Munandar</h3>
-            <p>Putra dari Bapak Kirman & Ibu Narti</p>
-            <p class="muted">Randulawang RT 00 RW 02, Butuh, Mojosongo, Boyolali </p>
+            <img id="groomPhoto" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80" alt="Foto mempelai pria (stock Unsplash)" loading="lazy" />
+            <h3 id="groomFullName">Bayu Sidiq Munandar</h3>
+            <p id="groomParents">Putra dari Bapak Kirman & Ibu Narti</p>
+            <p class="muted" id="groomOrigin">Randulawang RT 00 RW 02, Butuh, Mojosongo, Boyolali</p>
           </article>
         </div>
       </div>
@@ -79,7 +80,7 @@
     <section id="story" class="section" aria-label="Love Story">
       <div class="container reveal">
         <h2 class="title">Kisah Kami</h2>
-        <div class="timeline">
+        <div class="timeline" id="timeline">
           <div class="event">
             <span class="dot"></span>
             <div class="content">
@@ -113,23 +114,23 @@
       <div class="container reveal">
         <h2 class="title">Detail Acara</h2>
         <div class="event-grid">
-          <div class="card">
+          <div class="card card--accent" id="akadCard">
             <h3>Akad Nikah</h3>
-            <p><strong>Tanggal:</strong> Sabtu, 11 Oktober 2025</p>
-            <p><strong>Waktu:</strong> 10.00-11.00 WIB</p>
-            <p><strong>Tempat:</strong> Hotel New Merdeka Pati</p>
-            <p class="muted">Jl. Diponehoro No. 69 Pati</p>
+            <p><strong>Tanggal:</strong> <span id="akadDate">Sabtu, 11 Oktober 2025</span></p>
+            <p><strong>Waktu:</strong> <span id="akadTime">10.00-11.00 WIB</span></p>
+            <p><strong>Tempat:</strong> <span id="akadPlace">Hotel New Merdeka Pati</span></p>
+            <p class="muted" id="akadNote">Jl. Diponehoro No. 69 Pati</p>
           </div>
-          <div class="card">
+          <div class="card card--soft" id="resepsiCard">
             <h3>Resepsi</h3>
-            <p><strong>Tanggal:</strong> Sabtu, 11 Oktober 2025</p>
-            <p><strong>Waktu:</strong> 11.00 - 13.00 WIB</p>
-            <p><strong>Tempat:</strong> Hotel New Merdeka Pati</p>
-            <p class="muted">Jl. Diponehoro No. 69 Pati</p>
+            <p><strong>Tanggal:</strong> <span id="resepsiDate">Sabtu, 11 Oktober 2025</span></p>
+            <p><strong>Waktu:</strong> <span id="resepsiTime">11.00 - 13.00 WIB</span></p>
+            <p><strong>Tempat:</strong> <span id="resepsiPlace">Hotel New Merdeka Pati</span></p>
+            <p class="muted" id="resepsiNote">Jl. Diponehoro No. 69 Pati</p>
           </div>
         </div>
         <address class="venue">
-          <strong>Alamat:</strong> Jl. Diponehoro No. 69 Pati
+          <strong>Alamat:</strong> <span id="venueAddress">Jl. Diponehoro No. 69 Pati</span>
         </address>
         <div class="actions">
           <a id="gcal-link" class="btn btn-primary" href="#">Tambah ke Google Calendar</a>
@@ -144,10 +145,10 @@
         <h2 class="title">Peta Lokasi</h2>
         <div class="map-embed">
           <!-- Ganti src di bawah dengan embed map lokasi Anda -->
-           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1217.481430867941!2d111.03372765772274!3d-6.74792369220553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70d24d7f5b7a67%3A0xf5baa719f9d8810b!2sNew%20Merdeka%20Hotel%20Pati!5e1!3m2!1sid!2sid!4v1758091390758!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+           <iframe id="mapFrame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1217.481430867941!2d111.03372765772274!3d-6.74792369220553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70d24d7f5b7a67%3A0xf5baa719f9d8810b!2sNew%20Merdeka%20Hotel%20Pati!5e1!3m2!1sid!2sid!4v1758091390758!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
          
         </div>
-        <a class="btn btn-ghost" target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/ZLQWopLDXZnLTbQQ8">Buka di Google Maps</a>
+        <a id="mapLink" class="btn btn-ghost" target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/ZLQWopLDXZnLTbQQ8">Buka di Google Maps</a>
       </div>
     </section>
 
@@ -155,18 +156,11 @@
     <section id="gallery" class="section alt" aria-label="Galeri Foto">
       <div class="container reveal">
         <h2 class="title">Galeri</h2>
-        <div class="gallery-grid" id="galleryGrid">
-          <a href="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=70" alt="Cincin (Unsplash)" loading="lazy"></a>
-          <a href="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=70" alt="Buket (Unsplash)" loading="lazy"></a>
-          <a href="https://images.unsplash.com/photo-1460364157752-926555421a7e?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1460364157752-926555421a7e?auto=format&fit=crop&w=600&q=70" alt="Tangan pasangan (Unsplash)" loading="lazy"></a>
-          <a href="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=70" alt="Bunga (Unsplash)" loading="lazy"></a>
-          <a href="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=70" alt="Potret (Unsplash)" loading="lazy"></a>
-          <a href="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=70" alt="Pasangan (Unsplash)" loading="lazy"></a>
-        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
         <!-- Optional video -->
         <div class="video-wrap">
           <!-- Ganti link YouTube/Vimeo bila ada video prewedding -->
-          <iframe class="video" title="Video Prewedding" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <iframe id="videoFrame" class="video" title="Video Prewedding" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
     </section>
@@ -245,7 +239,7 @@
         <p class="muted">Jika berhalangan hadir, silakan bergabung melalui link berikut saat acara berlangsung.</p>
         <div class="video-wrap">
           <!-- Ganti src jika ada link live -->
-          <iframe class="video" title="Live Streaming" src="https://www.youtube.com/embed/live_stream?channel=YOUR_CHANNEL_ID" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+          <iframe id="liveFrame" class="video" title="Live Streaming" src="https://www.youtube.com/embed/live_stream?channel=YOUR_CHANNEL_ID" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
     </section>
@@ -261,17 +255,33 @@
           <a id="igOpenBtn" class="btn btn-ghost" target="_blank" rel="noopener" href="https://instagram.com/">Buka Instagram</a>
         </div>
       </div>
-    </section>
+  </section>
 
-    <footer class="footer" aria-label="Penutup & Kontak">
+  <footer class="footer" aria-label="Penutup & Kontak">
       <div class="container">
         <p>Terima kasih atas doa dan kehadiran Anda.</p>
-        <p class="muted">Kontak keluarga: 0812-XXXX-XXXX | IG: @anisa.bima</p>
+        <p class="muted" id="footerContact">Kontak keluarga: 0812-XXXX-XXXX | IG: @anisa.bima</p>
         <small>&copy; <span id="year"></span> A & B</small>
-        <p class="muted" style="margin-top:6px; font-size:.85rem">Foto: Unsplash · Musik: Pixabay (royalty‑free)</p>
+        <p class="muted" id="footerCredit" style="margin-top:6px; font-size:.85rem">Foto: Unsplash · Musik: Pixabay (royalty‑free)</p>
       </div>
       <button id="backToTop" class="back-to-top" aria-label="Kembali ke atas">&#8593;</button>
-    </footer>
+  </footer>
+
+  <!-- Floating bottom nav -->
+  <nav class="floating-nav" aria-label="Navigasi Undangan">
+    <ul>
+      <li><a href="#cover" data-target="cover" aria-label="Sampul">🏠</a></li>
+      <li><a href="#countdown" data-target="countdown" aria-label="Hitung Mundur">⏳</a></li>
+      <li><a href="#couple" data-target="couple" aria-label="Mempelai">💑</a></li>
+      <li><a href="#story" data-target="story" aria-label="Kisah">❤️</a></li>
+      <li><a href="#event" data-target="event" aria-label="Acara">📅</a></li>
+      <li><a href="#map" data-target="map" aria-label="Peta">📍</a></li>
+      <li><a href="#gallery" data-target="gallery" aria-label="Galeri">🖼️</a></li>
+      <li><a href="#rsvp" data-target="rsvp" aria-label="RSVP">✉️</a></li>
+      <li><a href="#guestbook" data-target="guestbook" aria-label="Ucapan">📖</a></li>
+      <li><a href="#share" data-target="share" aria-label="Bagikan">🔗</a></li>
+    </ul>
+  </nav>
 
     <!-- Lightbox Modal -->
     <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Pratinjau Gambar">
@@ -279,6 +289,7 @@
       <img id="lightboxImg" alt="Pratinjau Galeri"/>
     </div>
 
+    <script src="assets/config.js"></script>
     <script src="assets/js/main.js"></script>
   </body>
   </html>

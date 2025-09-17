@@ -41,11 +41,11 @@ a{color:inherit; text-decoration:none}
 .btn-danger{border-color:#c74b4b; color:#c74b4b}
 
 /* Cover */
-.cover{position:relative; min-height:100svh; display:grid; place-items:center; background:linear-gradient(180deg, #efe7df, #fff), url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=2000&q=60') center/cover fixed; text-align:center; overflow:hidden}
+.cover{position:relative; min-height:100svh; display:grid; place-items:center; background:linear-gradient(180deg, #efe7df, #fff), url('https://images.unsplash.com/photo-1580210931517-1c6e5d05f5b1?auto=format&fit=crop&w=2000&q=60') center/cover fixed; text-align:center; overflow:hidden}
 .cover .overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.85))}
 .cover-content{position:relative; z-index:1; padding:24px; backdrop-filter:saturate(1.1)}
 .monogram{width:88px; height:88px; margin-inline:auto; opacity:.9}
-.names{font-size:clamp(32px, 6vw, 60px); letter-spacing:.5px; margin:14px 0 8px}
+.names{font-size:clamp(32px, 6vw, 60px); letter-spacing:.5px; margin:14px 0 8px; animation:titleIntro .9s ease both}
 .date{color:#6a5a48; margin:0 0 20px}
 #open-invitation{box-shadow:var(--shadow)}
 .music-toggle{position:absolute; right:16px; bottom:16px; background:#fff; border:1px solid #e8ddd1; border-radius:999px; padding:10px 12px; cursor:pointer; box-shadow:var(--shadow)}
@@ -76,6 +76,12 @@ a{color:inherit; text-decoration:none}
 .event-grid{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px; margin-bottom:10px}
 .card{background:#fff; border:1px solid #efe4d7; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
 .card.small{padding:14px}
+.card{transition:box-shadow .25s ease, transform .2s ease, border-color .25s ease}
+.card:hover{transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,.10)}
+.card--accent{position:relative}
+.card--accent:before{content:""; position:absolute; left:14px; right:14px; top:10px; height:4px; border-radius:4px; background:linear-gradient(90deg, var(--primary), var(--accent)); opacity:.8}
+.card--soft{background:linear-gradient(180deg, #fff, #fffaf7); border-color:#f0e6db}
+.card--outline{background:#fff; border-style:dashed}
 .form .row{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px}
 label{display:flex; flex-direction:column; gap:6px; font-weight:600}
 input, select, textarea{width:100%; padding:10px 12px; border:1px solid #e6ded4; border-radius:10px; background:#fff}
@@ -126,3 +132,29 @@ input, select, textarea{width:100%; padding:10px 12px; border:1px solid #e6ded4;
   .countdown-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
   .gallery-grid{grid-template-columns:1fr}
 }
+
+/* Floating bottom nav */
+.floating-nav{position:fixed; left:50%; transform:translateX(-50%); bottom:16px; z-index:60; padding:8px 10px; border-radius:999px; border:1px solid #e8ddd1; background:rgba(255,255,255,.85); box-shadow:0 10px 30px rgba(0,0,0,.15)}
+.floating-nav ul{display:flex; gap:8px; margin:0; padding:0; list-style:none}
+.floating-nav a{display:grid; place-items:center; width:42px; height:42px; border-radius:999px; border:1px solid #e8ddd1; background:rgba(255,255,255,.9); font-size:18px; transition:transform .15s ease, background .2s ease, border-color .2s ease}
+.floating-nav a:hover{transform:translateY(-1px)}
+.floating-nav a.active{background:linear-gradient(180deg, var(--primary), #b88757); color:#fff; border-color:#b88757}
+@supports (backdrop-filter: blur(6px)){
+  .floating-nav{background:rgba(255,255,255,.55); backdrop-filter: blur(8px) saturate(1.2)}
+}
+@media (max-width:520px){
+  .floating-nav{bottom: calc(16px + env(safe-area-inset-bottom, 0px));}
+}
+
+/* Additions: batik pattern overlay, ornaments, and text animations */
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c79a6b' fill-opacity='0.06'%3E%3Cpath d='M0 30 l30 -30 l30 30 l-30 30 z'/%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:60px 60px; opacity:.6;
+}
+
+#cover .date{animation:fadeUp .9s .15s ease both}
+.ornament{width:120px; height:16px; margin:8px auto 12px; background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='20' viewBox='0 0 200 20'%3E%3Cpath d='M10 10h60c6 0 10 4 10 10C80 8 120 8 120 20c0-6 4-10 10-10h60' stroke='%23b88757' stroke-width='2' fill='none'/%3E%3Ccircle cx='100' cy='10' r='2' fill='%23b88757'/%3E%3C/svg%3E"); opacity:.85}
+.title{animation:fadeUp .8s ease both}
+@keyframes fadeUp{from{opacity:0; transform:translateY(12px)} to{opacity:1; transform:none}}
+@keyframes titleIntro{0%{letter-spacing:.4em; opacity:0; transform:translateY(8px)} 60%{opacity:1} 100%{letter-spacing:.02em; opacity:1; transform:none}}

@@ -1,5 +1,6 @@
 /* Main interactivity for the wedding invitation */
 (function(){
+  const CFG = window.INVITATION_CONFIG || null;
   const $ = (sel, ctx=document) => ctx.querySelector(sel);
   const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
 
@@ -22,6 +23,103 @@
     toggleMusic(true);
   });
   musicBtn?.addEventListener('click', ()=> toggleMusic());
+
+  // Apply dynamic configuration
+  (function applyConfig(){
+    if(!CFG) return;
+    // SEO and share
+    if(CFG.seo?.title) document.title = CFG.seo.title;
+    if(CFG.seo?.description) {
+      const d = $("meta[name='description']"); if(d) d.setAttribute('content', CFG.seo.description);
+    }
+    if(CFG.media?.ogImage){ const og = $("meta[property='og:image']"); og?.setAttribute('content', CFG.media.ogImage); }
+    const ogt = $("meta[property='og:title']"); if(ogt && CFG.seo?.title) ogt.setAttribute('content', CFG.seo.title);
+    const ogd = $("meta[property='og:description']"); if(ogd && CFG.seo?.description) ogd.setAttribute('content', CFG.seo.description);
+
+    // Names
+    if(CFG.couple){
+      if(CFG.couple.bride?.shortName) $('#brideName').textContent = CFG.couple.bride.shortName;
+      if(CFG.couple.groom?.shortName) $('#groomName').textContent = CFG.couple.groom.shortName;
+      if(CFG.couple.bride?.fullName) $('#brideFullName')?.replaceChildren(document.createTextNode(CFG.couple.bride.fullName));
+      if(CFG.couple.bride?.parents) $('#brideParents')?.replaceChildren(document.createTextNode(CFG.couple.bride.parents));
+      if(CFG.couple.bride?.origin) $('#brideOrigin')?.replaceChildren(document.createTextNode(CFG.couple.bride.origin));
+      if(CFG.couple.groom?.fullName) $('#groomFullName')?.replaceChildren(document.createTextNode(CFG.couple.groom.fullName));
+      if(CFG.couple.groom?.parents) $('#groomParents')?.replaceChildren(document.createTextNode(CFG.couple.groom.parents));
+      if(CFG.couple.groom?.origin) $('#groomOrigin')?.replaceChildren(document.createTextNode(CFG.couple.groom.origin));
+      if(CFG.couple.bride?.photoUrl) $('#bridePhoto')?.setAttribute('src', CFG.couple.bride.photoUrl);
+      if(CFG.couple.groom?.photoUrl) $('#groomPhoto')?.setAttribute('src', CFG.couple.groom.photoUrl);
+    }
+
+    // Date and countdown
+    if(CFG.event){
+      if(CFG.event.dateText) $('#weddingDateText').textContent = CFG.event.dateText;
+      if(CFG.event.countdownTarget) $('#countdownGrid')?.setAttribute('data-target-date', CFG.event.countdownTarget);
+
+      // Event details
+      if(CFG.event.akad){
+        $('#akadDate')?.replaceChildren(document.createTextNode(CFG.event.akad.dateText||''));
+        $('#akadTime')?.replaceChildren(document.createTextNode(CFG.event.akad.timeText||''));
+        $('#akadPlace')?.replaceChildren(document.createTextNode(CFG.event.akad.place||''));
+        $('#akadNote')?.replaceChildren(document.createTextNode(CFG.event.akad.note||''));
+      }
+      if(CFG.event.resepsi){
+        $('#resepsiDate')?.replaceChildren(document.createTextNode(CFG.event.resepsi.dateText||''));
+        $('#resepsiTime')?.replaceChildren(document.createTextNode(CFG.event.resepsi.timeText||''));
+        $('#resepsiPlace')?.replaceChildren(document.createTextNode(CFG.event.resepsi.place||''));
+        $('#resepsiNote')?.replaceChildren(document.createTextNode(CFG.event.resepsi.note||''));
+      }
+      if(CFG.event.venueAddress) $('#venueAddress')?.replaceChildren(document.createTextNode(CFG.event.venueAddress));
+    }
+
+    // Map
+    if(CFG.map){
+      if(CFG.map.embedSrc) $('#mapFrame')?.setAttribute('src', CFG.map.embedSrc);
+      if(CFG.map.mapLink) $('#mapLink')?.setAttribute('href', CFG.map.mapLink);
+    }
+
+    // Media
+    if(CFG.media){
+      // Cover background
+      if(CFG.media.coverImage){
+        const cover = $('#cover');
+        const gradient = 'linear-gradient(180deg, #efe7df, #fff)';
+        cover && (cover.style.backgroundImage = `${gradient}, url('${CFG.media.coverImage}')`);
+      }
+      if(CFG.media.musicUrl){ bgm?.setAttribute('src', CFG.media.musicUrl); }
+      if(CFG.media.videoUrl){ $('#videoFrame')?.setAttribute('src', CFG.media.videoUrl); }
+      if(CFG.media.liveUrl){ $('#liveFrame')?.setAttribute('src', CFG.media.liveUrl); }
+      if(Array.isArray(CFG.media.gallery)){
+        const grid = $('#galleryGrid'); if(grid){ grid.innerHTML='';
+          CFG.media.gallery.forEach(img=>{
+            const a = document.createElement('a'); a.href = img.src;
+            const i = document.createElement('img'); i.src = img.thumb || img.src; i.alt = img.alt || '';
+            i.loading='lazy'; a.appendChild(i); grid.appendChild(a);
+          });
+        }
+      }
+    }
+
+    // Love story
+    if(Array.isArray(CFG.loveStory)){
+      const tl = $('#timeline'); if(tl){ tl.innerHTML='';
+        CFG.loveStory.forEach(ev=>{
+          const wrap = document.createElement('div'); wrap.className='event';
+          const dot = document.createElement('span'); dot.className='dot';
+          const cont = document.createElement('div'); cont.className='content';
+          const h4 = document.createElement('h4'); h4.textContent = ev.title || '';
+          const time = document.createElement('time'); time.textContent = ev.time || '';
+          const p = document.createElement('p'); p.textContent = ev.text || '';
+          cont.append(h4, time, p); wrap.append(dot, cont); tl.appendChild(wrap);
+        });
+      }
+    }
+
+    // Footer contact/credit
+    if(CFG.contact){
+      if(CFG.contact.footerText) $('#footerContact')?.replaceChildren(document.createTextNode(CFG.contact.footerText));
+      if(CFG.contact.credit) $('#footerCredit')?.replaceChildren(document.createTextNode(CFG.contact.credit));
+    }
+  })();
 
   // Countdown
   (function initCountdown(){
@@ -47,6 +145,29 @@
   },{threshold:.15});
   $$('.reveal').forEach(el=> io.observe(el));
 
+  // Floating nav active state (scroll spy)
+  (function initFloatingNav(){
+    const links = $$('.floating-nav a'); if(!links.length) return;
+    const map = new Map(links.map(a=>[a.getAttribute('data-target'), a]));
+    links.forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        // default anchor behavior already smooth via CSS; keep for robustness
+        const id = a.getAttribute('data-target'); const sec = document.getElementById(id);
+        if(sec){ e.preventDefault(); sec.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+    const sections = Array.from(map.keys()).map(id=> document.getElementById(id)).filter(Boolean);
+    const obs = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const id = entry.target.id;
+          links.forEach(l=> l.classList.toggle('active', l.getAttribute('data-target')===id));
+        }
+      });
+    },{rootMargin:'-40% 0px -55% 0px', threshold:0.01});
+    sections.forEach(sec=> obs.observe(sec));
+  })();
+
   // Back to top
   $('#backToTop')?.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 
@@ -59,12 +180,11 @@
   // Google Calendar link & ICS download
   (function initCalendar(){
     const g = $('#gcal-link'); const icsBtn = $('#ics-download'); if(!g||!icsBtn) return;
-    // Edit these values to match the event
-    const title = 'Akad & Resepsi Anisa & Bima';
-    const details = 'Mohon doa restunya. Lokasi: Gedung Graha Citra.';
-    const location = 'Gedung Graha Citra, Jl. Mawar No. 123, Kota Bahagia';
-    const start = new Date('2025-12-14T08:00:00+07:00');
-    const end   = new Date('2025-12-14T14:00:00+07:00');
+    const title = (CFG?.event?.calendar?.title) || 'Akad & Resepsi';
+    const details = (CFG?.event?.calendar?.details) || '';
+    const location = (CFG?.event?.calendar?.location) || '';
+    const start = new Date((CFG?.event?.calendar?.startISO) || new Date());
+    const end   = new Date((CFG?.event?.calendar?.endISO)   || new Date());
     function toGCalDate(dt){
       // YYYYMMDDTHHMMSSZ (convert to UTC)
       const utc = new Date(dt.getTime() - (dt.getTimezoneOffset()*60000));
@@ -158,7 +278,7 @@
   // Share buttons
   (function initShare(){
     const shareBtn = $('#shareBtn'); const waBtn = $('#waShareBtn'); const copyBtn = $('#copyLinkBtn');
-    const url = window.location.href; const title = document.title; const text = 'Undangan pernikahan A & B. Mohon doa restu.';
+    const url = window.location.href; const title = (CFG?.share?.title) || document.title; const text = (CFG?.share?.text) || 'Undangan pernikahan. Mohon doa restu.';
     waBtn.href = `https://wa.me/?text=${encodeURIComponent(text + '\n' + url)}`;
     shareBtn?.addEventListener('click', async()=>{
       if(navigator.share){ try{ await navigator.share({title, text, url}); }catch(_){} }
@@ -172,4 +292,3 @@
   // Year
   const y = $('#year'); if(y) y.textContent = new Date().getFullYear();
 })();
-
