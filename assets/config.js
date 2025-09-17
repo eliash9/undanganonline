@@ -1,6 +1,10 @@
 // Centralized configuration for the invitation
-// Edit only this file to update names, dates, locations, photos, and links
+// Edit only this file to update names, dates, locations, photos, links, and integrations
 window.INVITATION_CONFIG = {
+  theme: {
+    primary: '#e3b584ff',
+    accent: '#670d4cff'
+  },
   seo: {
     title: 'Undangan Pernikahan | Pinanti & Bayu',
     description: 'Mohon doa restu dan kehadiran Anda di hari istimewa kami.'
@@ -22,7 +26,7 @@ window.INVITATION_CONFIG = {
       fullName: 'Bayu Sidiq Munandar',
       parents: 'Putra dari Bapak Kirman & Ibu Narti',
       origin: 'Randulawang RT 00 RW 02, Butuh, Mojosongo, Boyolali',
-      photoUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80'
+      photoUrl: 'https://cdn.pixabay.com/photo/2023/11/01/18/44/bride-8358737_1280.jpg'
     }
   },
   event: {
@@ -54,40 +58,16 @@ window.INVITATION_CONFIG = {
     mapLink: 'https://maps.app.goo.gl/ZLQWopLDXZnLTbQQ8'
   },
   media: {
-    coverImage: 'https://images.unsplash.com/photo-1580210931517-1c6e5d05f5b1?auto=format&fit=crop&w=2000&q=60',
+    coverImage: 'https://cdn.pixabay.com/photo/2023/11/01/18/44/bride-8358737_1280.jpg',
     ogImage: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=80',
     musicUrl: 'https://cdn.pixabay.com/download/audio/2022/03/15/audio_2d41d0799c.mp3?filename=inspiring-116199.mp3',
     gallery: [
-      {
-        src: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1600&q=80',
-        thumb: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=70',
-        alt: 'Cincin'
-      },
-      {
-        src: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80',
-        thumb: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=70',
-        alt: 'Buket'
-      },
-      {
-        src: 'https://images.unsplash.com/photo-1460364157752-926555421a7e?auto=format&fit=crop&w=1600&q=80',
-        thumb: 'https://images.unsplash.com/photo-1460364157752-926555421a7e?auto=format&fit=crop&w=600&q=70',
-        alt: 'Tangan pasangan'
-      },
-      {
-        src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1600&q=80',
-        thumb: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=70',
-        alt: 'Bunga'
-      },
-      {
-        src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1600&q=80',
-        thumb: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=70',
-        alt: 'Potret'
-      },
-      {
-        src: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1600&q=80',
-        thumb: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=70',
-        alt: 'Pasangan'
-      }
+      { src: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1600&q=80', thumb: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=70', alt: 'Cincin' },
+      { src: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80', thumb: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=70', alt: 'Buket' },
+      { src: 'https://images.unsplash.com/photo-1460364157752-926555421a7e?auto=format&fit=crop&w=1600&q=80', thumb: 'https://images.unsplash.com/photo-1460364157752-926555421a7e?auto=format&fit=crop&w=600&q=70', alt: 'Tangan pasangan' },
+      { src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1600&q=80', thumb: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=70', alt: 'Bunga' },
+      { src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1600&q=80', thumb: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=70', alt: 'Potret' },
+      { src: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1600&q=80', thumb: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=70', alt: 'Pasangan' }
     ],
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     liveUrl: 'https://www.youtube.com/embed/live_stream?channel=YOUR_CHANNEL_ID'
@@ -99,7 +79,13 @@ window.INVITATION_CONFIG = {
   ],
   contact: {
     footerText: 'Kontak keluarga: 0812-0000-XXXX | IG: @pinanti.bayu',
-    credit: 'Foto: Unsplash · Musik: Pixabay · Dibuat dengan 💖 oleh Kami'
+    credit: 'Foto: Unsplash · Musik: Pixabay (royalty‑free)'
+  },
+  integrations: {
+    whatsapp: { phone: '6281234567890' },
+    googleSheets: {
+      rsvpEndpoint: '',
+      wishesEndpoint: ''
+    }
   }
 };
-

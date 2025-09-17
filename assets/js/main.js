@@ -19,7 +19,9 @@
     }
   }
   openBtn?.addEventListener('click', ()=>{
-    document.getElementById('cover')?.scrollIntoView({behavior:'smooth'});
+    document.body.classList.add('invitation-open');
+    // Scroll to first section after cover (countdown)
+    document.getElementById('countdown')?.scrollIntoView({behavior:'smooth'});
     toggleMusic(true);
   });
   musicBtn?.addEventListener('click', ()=> toggleMusic());
@@ -27,6 +29,11 @@
   // Apply dynamic configuration
   (function applyConfig(){
     if(!CFG) return;
+    // Theme: apply primary/accent colors
+    if(CFG.theme){
+      if(CFG.theme.primary){ document.documentElement.style.setProperty('--primary', CFG.theme.primary); }
+      if(CFG.theme.accent){ document.documentElement.style.setProperty('--accent', CFG.theme.accent); }
+    }
     // SEO and share
     if(CFG.seo?.title) document.title = CFG.seo.title;
     if(CFG.seo?.description) {
@@ -229,6 +236,15 @@
     const form = $('#rsvpForm'); if(!form) return;
     const status = $('#rsvpStatus'); const list = $('#rsvpList'); const clear = $('#clearRsvp'); const waShare = $('#wa-share-rsvp');
     const KEY='rsvpEntries';
+    const waPhone = (CFG?.integrations?.whatsapp?.phone||'').replace(/\D/g,'');
+    const rsvpEndpoint = CFG?.integrations?.googleSheets?.rsvpEndpoint || '';
+    async function postToSheets(endpoint, payload){
+      if(!endpoint) return false;
+      try{
+        const res = await fetch(endpoint, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+        return res.ok;
+      }catch(_){ return false; }
+    }
     function load(){ try{return JSON.parse(localStorage.getItem(KEY))||[]}catch{return[]} }
     function save(arr){ localStorage.setItem(KEY, JSON.stringify(arr)); }
     function render(){ list.innerHTML=''; load().forEach(x=>{ const li=document.createElement('li'); li.textContent=`${x.name} (${x.attendance}) • ${x.guests} tamu${x.note?` – ${x.note}`:''}`; list.appendChild(li); }); }
@@ -238,12 +254,19 @@
       const data={ name:fd.get('name').toString().trim(), contact:fd.get('contact').toString().trim(), guests:+fd.get('guests')||1, attendance:fd.get('attendance'), note:fd.get('note').toString().trim(), ts:Date.now() };
       if(!data.name||!data.contact){ status.textContent='Nama dan kontak wajib diisi.'; return; }
       const arr=load(); arr.unshift(data); save(arr); render(); status.textContent='RSVP tersimpan di perangkat ini.'; form.reset();
+      // Send to Google Sheets if configured
+      postToSheets(rsvpEndpoint, { type:'rsvp', ...data }).then(ok=>{
+        if(ok) status.textContent='RSVP terkirim ke Google Sheet.';
+      });
     });
     clear?.addEventListener('click', ()=>{ if(confirm('Hapus seluruh data RSVP lokal?')){ localStorage.removeItem(KEY); render(); }});
     waShare?.addEventListener('click', (e)=>{
       const fd = new FormData(form);
-      const msg = `RSVP Undangan\nNama: ${fd.get('name')||''}\nKontak: ${fd.get('contact')||''}\nJumlah: ${fd.get('guests')||1}\nStatus: ${fd.get('attendance')||'hadir'}\nCatatan: ${fd.get('note')||''}`;
-      const url = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+      const bride = CFG?.couple?.bride?.shortName || 'Mempelai Wanita';
+      const groom = CFG?.couple?.groom?.shortName || 'Mempelai Pria';
+      const msg = `RSVP Undangan ${bride} & ${groom}\nNama: ${fd.get('name')||''}\nKontak: ${fd.get('contact')||''}\nJumlah: ${fd.get('guests')||1}\nStatus: ${fd.get('attendance')||'hadir'}\nCatatan: ${fd.get('note')||''}`;
+      const base = waPhone ? `https://wa.me/${waPhone}?text=` : `https://wa.me/?text=`;
+      const url = `${base}${encodeURIComponent(msg)}`;
       waShare.href = url;
     });
   })();
@@ -252,6 +275,16 @@
   (function initWishes(){
     const form = $('#wishForm'); if(!form) return;
     const list = $('#wishes'); const status = $('#wishStatus'); const KEY='guestbookEntries';
+    const waBtn = $('#wa-share-wish');
+    const waPhone = (CFG?.integrations?.whatsapp?.phone||'').replace(/\D/g,'');
+    const wishesEndpoint = CFG?.integrations?.googleSheets?.wishesEndpoint || '';
+    async function postToSheets(endpoint, payload){
+      if(!endpoint) return false;
+      try{
+        const res = await fetch(endpoint, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+        return res.ok;
+      }catch(_){ return false; }
+    }
     function load(){ try{return JSON.parse(localStorage.getItem(KEY))||[]}catch{return[]} }
     function save(arr){ localStorage.setItem(KEY, JSON.stringify(arr)); }
     function render(){
@@ -272,6 +305,18 @@
       const data = { name:fd.get('name').toString().trim(), from:fd.get('from').toString().trim(), message:fd.get('message').toString().trim(), ts:Date.now() };
       if(!data.name||!data.message){ status.textContent='Nama dan ucapan wajib diisi.'; return; }
       const arr = load(); arr.unshift(data); save(arr); form.reset(); render(); status.textContent='Ucapan tersimpan di perangkat ini.';
+      // Send to Google Sheets if configured
+      postToSheets(wishesEndpoint, { type:'wish', ...data }).then(ok=>{
+        if(ok) status.textContent='Ucapan terkirim ke Google Sheet.';
+      });
+    });
+    waBtn?.addEventListener('click', ()=>{
+      const fd = new FormData(form);
+      const bride = CFG?.couple?.bride?.shortName || 'Mempelai Wanita';
+      const groom = CFG?.couple?.groom?.shortName || 'Mempelai Pria';
+      const msg = `Ucapan untuk ${bride} & ${groom}\nDari: ${fd.get('name')||''} ${fd.get('from')?`(${fd.get('from')})`:''}\nPesan: ${fd.get('message')||''}`;
+      const base = waPhone ? `https://wa.me/${waPhone}?text=` : `https://wa.me/?text=`;
+      waBtn.href = `${base}${encodeURIComponent(msg)}`;
     });
   })();
 
