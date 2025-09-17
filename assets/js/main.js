@@ -4,6 +4,39 @@
   const $ = (sel, ctx=document) => ctx.querySelector(sel);
   const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
 
+  // Network helper: post to Google Sheets / external endpoints with CORS-safe fallback
+  async function postToSheets(endpoint, payload){
+    if(!endpoint) return false;
+    const isAppsScript = /script\.google\.com/.test(endpoint);
+    // Prepare simple form body to avoid CORS preflight
+    const form = new URLSearchParams();
+    try{
+      Object.entries(payload||{}).forEach(([k,v])=>{
+        const val = (v==null) ? '' : (typeof v==='object' ? JSON.stringify(v) : String(v));
+        form.append(k, val);
+      });
+    }catch(_){ /* ignore */ }
+    try{
+      if(isAppsScript){
+        // Apps Script: prefer simple POST without custom headers, no-cors (opaque response)
+        await fetch(endpoint, { method:'POST', body: form, mode:'no-cors', keepalive:true });
+        return true; // assume delivered; response is opaque
+      }
+      // Try JSON first for non-Apps Script endpoints
+      const res = await fetch(endpoint, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload||{}), mode:'cors' });
+      if(res.ok) return true;
+      // Fallback: simple POST without headers to dodge CORS preflight
+      await fetch(endpoint, { method:'POST', body: form, mode:'no-cors', keepalive:true });
+      return true;
+    }catch(_){
+      try{
+        // Last attempt: fire-and-forget simple POST
+        await fetch(endpoint, { method:'POST', body: form, mode:'no-cors', keepalive:true });
+        return true;
+      }catch(__){ return false; }
+    }
+  }
+
   // Open Invitation & Music control
   const bgm = $('#bg-music');
   const musicBtn = $('#music-toggle');
@@ -287,13 +320,6 @@
     const KEY='rsvpEntries';
     const waPhone = (CFG?.integrations?.whatsapp?.phone||'').replace(/\D/g,'');
     const rsvpEndpoint = CFG?.integrations?.googleSheets?.rsvpEndpoint || '';
-    async function postToSheets(endpoint, payload){
-      if(!endpoint) return false;
-      try{
-        const res = await fetch(endpoint, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
-        return res.ok;
-      }catch(_){ return false; }
-    }
     function load(){ try{return JSON.parse(localStorage.getItem(KEY))||[]}catch{return[]} }
     function save(arr){ localStorage.setItem(KEY, JSON.stringify(arr)); }
     function render(){ list.innerHTML=''; load().forEach(x=>{ const li=document.createElement('li'); li.textContent=`${x.name} (${x.attendance}) • ${x.guests} tamu${x.note?` – ${x.note}`:''}`; list.appendChild(li); }); }
@@ -333,13 +359,6 @@
     const waBtn = $('#wa-share-wish');
     const waPhone = (CFG?.integrations?.whatsapp?.phone||'').replace(/\D/g,'');
     const wishesEndpoint = CFG?.integrations?.googleSheets?.wishesEndpoint || '';
-    async function postToSheets(endpoint, payload){
-      if(!endpoint) return false;
-      try{
-        const res = await fetch(endpoint, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
-        return res.ok;
-      }catch(_){ return false; }
-    }
     function load(){ try{return JSON.parse(localStorage.getItem(KEY))||[]}catch{return[]} }
     function save(arr){ localStorage.setItem(KEY, JSON.stringify(arr)); }
     function render(){

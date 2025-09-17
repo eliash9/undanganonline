@@ -90,8 +90,8 @@ window.INVITATION_CONFIG = {
   integrations: {
     whatsapp: { phone: '6281234567890' },
     googleSheets: {
-      rsvpEndpoint: 'https://script.google.com/macros/s/AKfycbxTDsrr0UFUO8K9pPH7Y9LM83OqNDsr3Bh4VRqhxWemHtGAD5oz8nHNOaJhxz1RfTi9kg/exec',
-      wishesEndpoint: 'https://script.google.com/macros/s/AKfycbxTDsrr0UFUO8K9pPH7Y9LM83OqNDsr3Bh4VRqhxWemHtGAD5oz8nHNOaJhxz1RfTi9kg/exec'
+      rsvpEndpoint: 'https://script.google.com/macros/s/AKfycbwbRaTUQxR78zD3V_7QKaH7BFHUX_UKq6cbArivGwVS3O7ZiF9PIYUqdDWkzDJ_4pHA/exec',
+      wishesEndpoint: 'https://script.google.com/macros/s/AKfycbwbRaTUQxR78zD3V_7QKaH7BFHUX_UKq6cbArivGwVS3O7ZiF9PIYUqdDWkzDJ_4pHA/exec'
     }
   }
 };
