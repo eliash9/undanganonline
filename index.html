@@ -108,14 +108,20 @@
     <section id="couple" class="section alt decor" aria-label="Profil Mempelai">
       <div class="container reveal">
         <h2 class="title">Mempelai</h2>
+        <img class="sec-decor right" src="assets/img/Tropis 8.png" alt="Dekor tropis" loading="lazy"/>
         <div class="couple-grid">
+            
           <article class="person">
+            
+             
             <img id="bridePhoto" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Foto mempelai wanita (stock Unsplash)" loading="lazy" />
             <h3 id="brideFullName">Retno Pinanti Khairunnisa</h3>
             <p id="brideParents">Putri dari Bapak Karyono dan Ibu Rosyidah</p>
             <p class="muted" id="brideOrigin">Jl. Puntodewo No.1 Panjunan RT 01 RW 01, Pati, Pati</p>
+            
           </article>
           <article class="person">
+            
             <img id="groomPhoto" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80" alt="Foto mempelai pria (stock Unsplash)" loading="lazy" />
             <h3 id="groomFullName">Bayu Sidiq Munandar</h3>
             <p id="groomParents">Putra dari Bapak Kirman & Ibu Narti</p>
@@ -132,14 +138,14 @@
       <div class="container reveal">
         <h2 class="title">Detail Acara</h2>
         <div class="event-grid">
-          <div class="card card--accent" id="akadCard">
+          <div class="card inv-card " id="akadCard">
             <h3>Akad Nikah</h3>
             <p><strong>Tanggal:</strong> <span id="akadDate">Sabtu, 11 Oktober 2025</span></p>
             <p><strong>Waktu:</strong> <span id="akadTime">10.00-11.00 WIB</span></p>
             <p><strong>Tempat:</strong> <span id="akadPlace">Hotel New Merdeka Pati</span></p>
             <p class="muted" id="akadNote">Jl. Diponehoro No. 69 Pati</p>
           </div>
-          <div class="card card--soft" id="resepsiCard">
+          <div class="card inv-card card--soft" id="resepsiCard">
             <h3>Resepsi</h3>
             <p><strong>Tanggal:</strong> <span id="resepsiDate">Sabtu, 11 Oktober 2025</span></p>
             <p><strong>Waktu:</strong> <span id="resepsiTime">11.00 - 13.00 WIB</span></p>
@@ -166,15 +172,15 @@
            <iframe id="mapFrame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1217.481430867941!2d111.03372765772274!3d-6.74792369220553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70d24d7f5b7a67%3A0xf5baa719f9d8810b!2sNew%20Merdeka%20Hotel%20Pati!5e1!3m2!1sid!2sid!4v1758091390758!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
          
         </div>
-        <a id="mapLink" class="btn btn-ghost" target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/ZLQWopLDXZnLTbQQ8">Buka di Google Maps</a>
       </div>
+      
     </section>
 
     <!-- Gallery -->
     <section id="gallery" class="section alt decor" aria-label="Galeri Foto">
       <div class="container reveal">
         <h2 class="title">Galeri</h2>
-        <img class="sec-decor left" src="assets/img/Tropis 7.png" alt="Dekor tropis" loading="lazy"/>
+        
         <img class="sec-decor right" src="assets/img/Tropis 5.png" alt="Dekor tropis" loading="lazy"/>
         <div class="gallery-grid" id="galleryGrid"></div>
         <!-- Optional video -->
@@ -186,7 +192,7 @@
     <section id="rsvp" class="section decor" aria-label="Konfirmasi Kehadiran">
       <div class="container reveal">
         <h2 class="title">Konfirmasi Kehadiran</h2>
-        <img class="sec-decor left" src="assets/img/Tropis 8.png" alt="Dekor tropis" loading="lazy"/>
+        
         <img class="sec-decor right" src="assets/img/Tropis 1.png" alt="Dekor tropis" loading="lazy"/>
         <form id="rsvpForm" class="card form">
           <div class="row">
@@ -214,11 +220,13 @@
           </label>
         <div class="actions">
           <button type="submit" class="btn btn-primary">Kirim RSVP</button>
+
           <a id="wa-share-rsvp" class="btn btn-ghost" target="_blank" rel="noopener">Kirim via WhatsApp</a>
-          <button type="button" id="rsvpTestBtn" class="btn btn-ghost" title="Tes kirim ke Google Sheets">Tes Google Sheets</button>
+          
         </div>
           <p id="rsvpStatus" class="status" role="status" aria-live="polite"></p>
         </form>
+        
         <details class="card small">
           <summary>Lihat daftar RSVP tersimpan (perangkat ini)</summary>
           <ul id="rsvpList" class="list"></ul>
@@ -231,7 +239,7 @@
     <section id="guestbook" class="section alt decor" aria-label="Buku Tamu Ucapan">
       <div class="container reveal">
         <h2 class="title">Buku Ucapan</h2>
-        <img class="sec-decor left" src="assets/img/Tropis 5.png" alt="Dekor tropis" loading="lazy"/>
+        
         <img class="sec-decor right" src="assets/img/Tropis 7.png" alt="Dekor tropis" loading="lazy"/>
         <form id="wishForm" class="card form">
           <div class="row">
@@ -248,7 +256,7 @@
         <div class="actions">
           <button type="submit" class="btn btn-primary">Kirim Ucapan</button>
           <a id="wa-share-wish" class="btn btn-ghost" target="_blank" rel="noopener">Kirim via WhatsApp</a>
-          <button type="button" id="wishTestBtn" class="btn btn-ghost" title="Tes kirim ke Google Sheets">Tes Google Sheets</button>
+         
         </div>
           <p id="wishStatus" class="status" role="status" aria-live="polite"></p>
         </form>
@@ -259,7 +267,7 @@
     <section id="verse" class="section alt decor" aria-label="Ayat Al-Qur'an">
       <div class="container reveal">
         <h2 class="title">Ayat Pengingat</h2>
-        <blockquote class="ayah card card--soft">
+        <blockquote class="ayah inv-card ">
           <p>“Dan Diantara tanda-tanda kebesaran-Nya ialah diciptakan-Nya untukmu pasangan hidup dari jenismu sendiri supaya kamu mendapatkan ketenangan hati dan dijadikan-Nya kasih sayang diantara kamu sesungguhnya yang demikian menjadi tanda-tanda kebesaran-Nya bagi orang-orang yang berfikir”.</p>
           <footer>— Surat Ar-Rūm: 21</footer>
         </blockquote>
@@ -286,7 +294,7 @@
         <p>Terima kasih atas doa dan kehadiran Anda.</p>
         <p class="muted" id="footerContact">Kontak keluarga: 0812-XXXX-XXXX | IG: @anisa.bima</p>
         <small>&copy; <span id="year"></span> A & B</small>
-        <p class="muted" id="footerCredit" style="margin-top:6px; font-size:.85rem">Foto: Unsplash · Musik: Pixabay (royalty‑free)</p>
+        <p class="muted" id="footerCredit" style="margin-top:6px; font-size:.85rem"></p>
       </div>
       <button id="backToTop" class="back-to-top" aria-label="Kembali ke atas">&#8593;</button>
   </footer>

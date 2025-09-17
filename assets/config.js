@@ -32,7 +32,7 @@ window.INVITATION_CONFIG = {
       shortName: 'Bayu',
       fullName: 'Bayu Sidiq Munandar',
       parents: 'Putra dari Bapak Kirman & Ibu Narti',
-      origin: 'Randulawang RT 00 RW 02, Butuh, Mojosongo, Boyolali',
+      origin: 'Randulawang RT 06 RW 02, Butuh, Mojosongo, Boyolali',
       photoUrl: 'assets/img/groom.png'
     }
   },
@@ -43,19 +43,19 @@ window.INVITATION_CONFIG = {
       dateText: 'Sabtu, 11 Oktober 2025',
       timeText: '10.00-11.00 WIB',
       place: 'Hotel New Merdeka Pati',
-      note: 'Jl. Diponehoro No. 69 Pati'
+      note: 'Jl. Diponegoro No. 69 Pati'
     },
     resepsi: {
       dateText: 'Sabtu, 11 Oktober 2025',
       timeText: '11.00 - 13.00 WIB',
       place: 'Hotel New Merdeka Pati',
-      note: 'Jl. Diponehoro No. 69 Pati'
+      note: 'Jl. Diponegoro No. 69 Pati'
     },
-    venueAddress: 'Jl. Diponehoro No. 69 Pati',
+    venueAddress: 'Jl. Diponegoro No. 69 Pati',
     calendar: {
       title: 'Akad & Resepsi Pinanti & Bayu',
       details: 'Mohon doa restu. Lokasi: Hotel New Merdeka Pati.',
-      location: 'Hotel New Merdeka Pati, Jl. Diponehoro No. 69 Pati',
+      location: 'Hotel New Merdeka Pati, Jl. Diponegoro No. 69 Pati',
       startISO: '2025-10-11T10:00:00+07:00',
       endISO: '2025-10-11T13:00:00+07:00'
     }
