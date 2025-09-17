@@ -31,8 +31,9 @@
     if(!CFG) return;
     // Theme: apply primary/accent colors
     if(CFG.theme){
-      if(CFG.theme.primary){ document.documentElement.style.setProperty('--primary', CFG.theme.primary); }
-      if(CFG.theme.accent){ document.documentElement.style.setProperty('--accent', CFG.theme.accent); }
+      if(CFG.theme.primary){ document.documentElement.style.setProperty('--primary', CFG.theme.primary); document.documentElement.style.setProperty('--brand-maroon', CFG.theme.primary); }
+      if(CFG.theme.accent){ document.documentElement.style.setProperty('--accent', CFG.theme.accent); document.documentElement.style.setProperty('--brand-apricot', CFG.theme.accent); }
+      if(CFG.theme.secondary){ document.documentElement.style.setProperty('--brand-green', CFG.theme.secondary); }
     }
     // SEO and share
     if(CFG.seo?.title) document.title = CFG.seo.title;
@@ -42,6 +43,15 @@
     if(CFG.media?.ogImage){ const og = $("meta[property='og:image']"); og?.setAttribute('content', CFG.media.ogImage); }
     const ogt = $("meta[property='og:title']"); if(ogt && CFG.seo?.title) ogt.setAttribute('content', CFG.seo.title);
     const ogd = $("meta[property='og:description']"); if(ogd && CFG.seo?.description) ogd.setAttribute('content', CFG.seo.description);
+
+    // UI toggles
+    {
+      const hideFloating = !!(CFG.ui && CFG.ui.hideFloatingUntilOpen);
+      // If not hiding until open, ensure nav/back-to-top are visible immediately
+      document.body.classList.toggle('invitation-open', !hideFloating);
+      if(CFG.ui && CFG.ui.showHealthBanner===false){ document.getElementById('health-banner')?.classList.add('hidden'); }
+      if(CFG.ui && CFG.ui.usePatternDecor===false){ document.querySelectorAll('.section.decor').forEach(el=> el.classList.remove('decor')); }
+    }
 
     // Names
     if(CFG.couple){
@@ -55,6 +65,13 @@
       if(CFG.couple.groom?.origin) $('#groomOrigin')?.replaceChildren(document.createTextNode(CFG.couple.groom.origin));
       if(CFG.couple.bride?.photoUrl) $('#bridePhoto')?.setAttribute('src', CFG.couple.bride.photoUrl);
       if(CFG.couple.groom?.photoUrl) $('#groomPhoto')?.setAttribute('src', CFG.couple.groom.photoUrl);
+      // Invitation card
+      if(CFG.couple.bride?.fullName) $('#icBrideFull')?.replaceChildren(document.createTextNode(CFG.couple.bride.fullName));
+      if(CFG.couple.bride?.parents) $('#icBrideParents')?.replaceChildren(document.createTextNode(CFG.couple.bride.parents));
+      if(CFG.couple.bride?.origin) $('#icBrideAddr')?.replaceChildren(document.createTextNode(CFG.couple.bride.origin));
+      if(CFG.couple.groom?.fullName) $('#icGroomFull')?.replaceChildren(document.createTextNode(CFG.couple.groom.fullName));
+      if(CFG.couple.groom?.parents) $('#icGroomParents')?.replaceChildren(document.createTextNode(CFG.couple.groom.parents));
+      if(CFG.couple.groom?.origin) $('#icGroomAddr')?.replaceChildren(document.createTextNode(CFG.couple.groom.origin));
     }
 
     // Date and countdown
@@ -76,6 +93,28 @@
         $('#resepsiNote')?.replaceChildren(document.createTextNode(CFG.event.resepsi.note||''));
       }
       if(CFG.event.venueAddress) $('#venueAddress')?.replaceChildren(document.createTextNode(CFG.event.venueAddress));
+      // Invitation card bindings
+      $('#icDate')?.replaceChildren(document.createTextNode(CFG.event.dateText||''));
+      if(CFG.event.akad?.timeText){
+        const t = CFG.event.akad.timeText.replace(/^[Pp]ukul\s*/,'');
+        $('#icAkadTime')?.replaceChildren(document.createTextNode(`Pukul ${t}`));
+      }
+      if(CFG.event.resepsi?.timeText){
+        const t = CFG.event.resepsi.timeText.replace(/^[Pp]ukul\s*/,'');
+        $('#icResepsiTime')?.replaceChildren(document.createTextNode(`Pukul ${t}`));
+      }
+      if(CFG.event.akad?.place) $('#icVenueName')?.replaceChildren(document.createTextNode(CFG.event.akad.place));
+      if(CFG.event.venueAddress) $('#icVenueAddr')?.replaceChildren(document.createTextNode(CFG.event.venueAddress));
+      // Invitation card bindings
+      $('#icDate')?.replaceChildren(document.createTextNode(CFG.event.dateText||''));
+      if(CFG.event.akad?.timeText){
+        const t = CFG.event.akad.timeText.replace(/^[Pp]ukul\s*/,'');
+        $('#icAkadTime')?.replaceChildren(document.createTextNode(`Pukul ${t}`));
+      }
+      if(CFG.event.resepsi?.timeText){
+        const t = CFG.event.resepsi.timeText.replace(/^[Pp]ukul\s*/,'');
+        $('#icResepsiTime')?.replaceChildren(document.createTextNode(`Pukul ${t}`));
+      }
     }
 
     // Map
@@ -86,11 +125,21 @@
 
     // Media
     if(CFG.media){
-      // Cover background
+      // Cover background + pattern image via CSS variables
       if(CFG.media.coverImage){
-        const cover = $('#cover');
-        const gradient = 'linear-gradient(180deg, #efe7df, #fff)';
-        cover && (cover.style.backgroundImage = `${gradient}, url('${CFG.media.coverImage}')`);
+        const url = CFG.media.coverImage;
+        document.documentElement.style.setProperty('--cover-img', `url('${url}')`);
+        const coverEl = document.getElementById('cover');
+        if(coverEl){
+          const gradient = 'linear-gradient(180deg, #efe7df, #fff)';
+          coverEl.style.backgroundImage = `${gradient}, url('${url}')`;
+          coverEl.style.backgroundPosition = 'center';
+          coverEl.style.backgroundSize = 'cover';
+          coverEl.style.backgroundAttachment = 'fixed';
+        }
+      }
+      if(CFG.media.patternImage){
+        document.documentElement.style.setProperty('--pattern-img', `url('${CFG.media.patternImage}')`);
       }
       if(CFG.media.musicUrl){ bgm?.setAttribute('src', CFG.media.musicUrl); }
       if(CFG.media.videoUrl){ $('#videoFrame')?.setAttribute('src', CFG.media.videoUrl); }
@@ -269,6 +318,12 @@
       const url = `${base}${encodeURIComponent(msg)}`;
       waShare.href = url;
     });
+    // Test button for Google Sheets
+    const testBtn = $('#rsvpTestBtn');
+    testBtn?.addEventListener('click', async()=>{
+      const ok = await postToSheets(rsvpEndpoint, { type:'rsvp_test', name:'Tes', contact:'-', guests:1, attendance:'hadir', note:'test', ts:Date.now() });
+      status.textContent = ok ? 'Tes RSVP: terkirim ke Google Sheet.' : 'Tes RSVP: gagal (cek endpoint/izin).';
+    });
   })();
 
   // Guestbook / Wishes (localStorage)
@@ -317,6 +372,12 @@
       const msg = `Ucapan untuk ${bride} & ${groom}\nDari: ${fd.get('name')||''} ${fd.get('from')?`(${fd.get('from')})`:''}\nPesan: ${fd.get('message')||''}`;
       const base = waPhone ? `https://wa.me/${waPhone}?text=` : `https://wa.me/?text=`;
       waBtn.href = `${base}${encodeURIComponent(msg)}`;
+    });
+    // Test button for Google Sheets
+    const testBtn = $('#wishTestBtn');
+    testBtn?.addEventListener('click', async()=>{
+      const ok = await postToSheets(wishesEndpoint, { type:'wish_test', name:'Tes', from:'-', message:'test', ts:Date.now() });
+      status.textContent = ok ? 'Tes Ucapan: terkirim ke Google Sheet.' : 'Tes Ucapan: gagal (cek endpoint/izin).';
     });
   })();
 

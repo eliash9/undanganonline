@@ -30,14 +30,14 @@
     <header id="cover" class="section cover" aria-label="Sampul Undangan">
       <div class="overlay"></div>
       <div class="cover-content">
-        <img src="assets/img/monogram.svg" alt="Monogram" class="monogram" />
+        <img src="assets/media/monogram.png" alt="Monogram" class="monogram" />
         <h1 class="names"><span id="brideName">Pinanti</span> & <span id="groomName">Bayu</span></h1>
         <div class="ornament" aria-hidden="true"></div>
         <p class="date" id="weddingDateText">Sabtu, 11 Oktober 2025</p>
         <button id="open-invitation" class="btn btn-primary">Buka Undangan</button>
       </div>
       <!-- Royalty-free music (Pixabay). Ganti link bila perlu. -->
-      <audio id="bg-music" preload="none" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_2d41d0799c.mp3?filename=inspiring-116199.mp3"></audio>
+      <audio id="bg-music" preload="none" src="assets/media/arabic-islamic-islam-music-360770.mp3"></audio>
       <button id="music-toggle" class="music-toggle" aria-label="Putar/jeda musik" title="Musik">&#x1F50A;</button>
       <a href="#rsvp" class="floating-cta">RSVP</a>
     </header>
@@ -55,8 +55,57 @@
       </div>
     </section>
 
+    <!-- Formal Invitation Card (from design) -->
+    <section id="invitationCard" class="section" aria-label="Kartu Undangan">
+      <div class="container reveal">
+        <div class="inv-card">
+          <div class="inv-inner">
+            <img class="inv-decor left" src="assets/img/Tropis 7.png" alt="Dekor tropis kiri" loading="lazy"/>
+            <img class="inv-decor right" src="assets/img/Tropis 5.png" alt="Dekor tropis kanan" loading="lazy"/>
+            <img src="assets/media/monogram.png" alt="Monogram" class="inv-logo"/>
+            <p class="inv-greet">Assalamu’alaikum warahmatullahi wabarakatuh</p>
+            <p class="inv-open">Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan kami.</p>
+
+            <h3 class="inv-name" id="icBrideFull">Retno Pinanti Khairunnisa</h3>
+            <p class="inv-sub" id="icBrideParents">Putri dari Bapak Karyono & Ibu Rosyidah</p>
+            <p class="inv-addr" id="icBrideAddr">Jl. Puntodewo No.1, Panjunan RT 02 RW 01, Pati, Pati</p>
+
+            <div class="inv-amp">&amp;</div>
+
+            <h3 class="inv-name" id="icGroomFull">Bayu Sidiq Munandar</h3>
+            <p class="inv-sub" id="icGroomParents">Putra dari Bapak Kirman & Ibu Narti</p>
+            <p class="inv-addr" id="icGroomAddr">Randulawang RT 00 RW 02, Butuh, Mojosongo, Boyolali</p>
+
+            <p class="inv-lead">Pernikahan diselenggarakan pada:</p>
+            <h4 class="inv-date" id="icDate">Sabtu, 11 Oktober 2025</h4>
+
+            <div class="inv-times">
+              <div>
+                <strong>Akad Nikah</strong>
+                <div id="icAkadTime">Pukul 10.00–11.00 WIB</div>
+              </div>
+              <div>
+                <strong>Resepsi</strong>
+                <div id="icResepsiTime">Pukul 11.00–13.00 WIB</div>
+              </div>
+            </div>
+
+            <div class="inv-venue">
+              <strong id="icVenueName">Hotel New Merdeka Pati</strong>
+              <div id="icVenueAddr">Jl. Diponegoro No.69 Pati</div>
+            </div>
+
+            <p class="inv-note">Acara akan dilaksanakan dengan khidmat. Kami mengharap kehadiran dan doa restu Bapak/Ibu/Saudara/i.</p>
+            <p class="inv-greet">Wassalamu’alaikum warahmatullahi wabarakatuh</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   
+
     <!-- Couple Profile -->
-    <section id="couple" class="section alt" aria-label="Profil Mempelai">
+    <section id="couple" class="section alt decor" aria-label="Profil Mempelai">
       <div class="container reveal">
         <h2 class="title">Mempelai</h2>
         <div class="couple-grid">
@@ -76,41 +125,10 @@
       </div>
     </section>
 
-    <!-- Love Story -->
-    <section id="story" class="section" aria-label="Love Story">
-      <div class="container reveal">
-        <h2 class="title">Kisah Kami</h2>
-        <div class="timeline" id="timeline">
-          <div class="event">
-            <span class="dot"></span>
-            <div class="content">
-              <h4>Pertemuan Pertama</h4>
-              <time>2019</time>
-              <p>Bertemu di sebuah acara komunitas dan saling bertukar cerita.</p>
-            </div>
-          </div>
-          <div class="event">
-            <span class="dot"></span>
-            <div class="content">
-              <h4>Komitmen</h4>
-              <time>2022</time>
-              <p>Memutuskan untuk melangkah bersama ke jenjang yang lebih serius.</p>
-            </div>
-          </div>
-          <div class="event">
-            <span class="dot"></span>
-            <div class="content">
-              <h4>Lamaran</h4>
-              <time>2024</time>
-              <p>Prosesi lamaran sederhana bersama keluarga terdekat.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+   
 
     <!-- Event Details -->
-    <section id="event" class="section alt" aria-label="Detail Acara">
+    <section id="event" class="section alt decor" aria-label="Detail Acara">
       <div class="container reveal">
         <h2 class="title">Detail Acara</h2>
         <div class="event-grid">
@@ -153,22 +171,23 @@
     </section>
 
     <!-- Gallery -->
-    <section id="gallery" class="section alt" aria-label="Galeri Foto">
+    <section id="gallery" class="section alt decor" aria-label="Galeri Foto">
       <div class="container reveal">
         <h2 class="title">Galeri</h2>
+        <img class="sec-decor left" src="assets/img/Tropis 7.png" alt="Dekor tropis" loading="lazy"/>
+        <img class="sec-decor right" src="assets/img/Tropis 5.png" alt="Dekor tropis" loading="lazy"/>
         <div class="gallery-grid" id="galleryGrid"></div>
         <!-- Optional video -->
-        <div class="video-wrap">
-          <!-- Ganti link YouTube/Vimeo bila ada video prewedding -->
-          <iframe id="videoFrame" class="video" title="Video Prewedding" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-        </div>
+       
       </div>
     </section>
 
     <!-- RSVP -->
-    <section id="rsvp" class="section" aria-label="Konfirmasi Kehadiran">
+    <section id="rsvp" class="section decor" aria-label="Konfirmasi Kehadiran">
       <div class="container reveal">
         <h2 class="title">Konfirmasi Kehadiran</h2>
+        <img class="sec-decor left" src="assets/img/Tropis 8.png" alt="Dekor tropis" loading="lazy"/>
+        <img class="sec-decor right" src="assets/img/Tropis 1.png" alt="Dekor tropis" loading="lazy"/>
         <form id="rsvpForm" class="card form">
           <div class="row">
             <label>Nama
@@ -193,10 +212,11 @@
           <label>Catatan
             <textarea name="note" rows="3" placeholder="Ucapan/permintaan khusus"></textarea>
           </label>
-          <div class="actions">
-            <button type="submit" class="btn btn-primary">Kirim RSVP</button>
-            <a id="wa-share-rsvp" class="btn btn-ghost" target="_blank" rel="noopener">Kirim via WhatsApp</a>
-          </div>
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Kirim RSVP</button>
+          <a id="wa-share-rsvp" class="btn btn-ghost" target="_blank" rel="noopener">Kirim via WhatsApp</a>
+          <button type="button" id="rsvpTestBtn" class="btn btn-ghost" title="Tes kirim ke Google Sheets">Tes Google Sheets</button>
+        </div>
           <p id="rsvpStatus" class="status" role="status" aria-live="polite"></p>
         </form>
         <details class="card small">
@@ -208,9 +228,11 @@
     </section>
 
     <!-- Guestbook / Ucapan -->
-    <section id="guestbook" class="section alt" aria-label="Buku Tamu Ucapan">
+    <section id="guestbook" class="section alt decor" aria-label="Buku Tamu Ucapan">
       <div class="container reveal">
         <h2 class="title">Buku Ucapan</h2>
+        <img class="sec-decor left" src="assets/img/Tropis 5.png" alt="Dekor tropis" loading="lazy"/>
+        <img class="sec-decor right" src="assets/img/Tropis 7.png" alt="Dekor tropis" loading="lazy"/>
         <form id="wishForm" class="card form">
           <div class="row">
             <label>Nama
@@ -223,27 +245,28 @@
           <label>Ucapan
             <textarea name="message" rows="3" required placeholder="Tulis doa/ucapan"></textarea>
           </label>
-          <div class="actions">
-            <button type="submit" class="btn btn-primary">Kirim Ucapan</button>
-            <a id="wa-share-wish" class="btn btn-ghost" target="_blank" rel="noopener">Kirim via WhatsApp</a>
-          </div>
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Kirim Ucapan</button>
+          <a id="wa-share-wish" class="btn btn-ghost" target="_blank" rel="noopener">Kirim via WhatsApp</a>
+          <button type="button" id="wishTestBtn" class="btn btn-ghost" title="Tes kirim ke Google Sheets">Tes Google Sheets</button>
+        </div>
           <p id="wishStatus" class="status" role="status" aria-live="polite"></p>
         </form>
         <ul id="wishes" class="wishes"></ul>
       </div>
     </section>
-
-    <!-- Live Streaming (optional) -->
-    <section id="live" class="section" aria-label="Live Streaming">
+     <!-- Quranic Verse -->
+    <section id="verse" class="section alt decor" aria-label="Ayat Al-Qur'an">
       <div class="container reveal">
-        <h2 class="title">Live Streaming</h2>
-        <p class="muted">Jika berhalangan hadir, silakan bergabung melalui link berikut saat acara berlangsung.</p>
-        <div class="video-wrap">
-          <!-- Ganti src jika ada link live -->
-          <iframe id="liveFrame" class="video" title="Live Streaming" src="https://www.youtube.com/embed/live_stream?channel=YOUR_CHANNEL_ID" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
-        </div>
+        <h2 class="title">Ayat Pengingat</h2>
+        <blockquote class="ayah card card--soft">
+          <p>“Dan Diantara tanda-tanda kebesaran-Nya ialah diciptakan-Nya untukmu pasangan hidup dari jenismu sendiri supaya kamu mendapatkan ketenangan hati dan dijadikan-Nya kasih sayang diantara kamu sesungguhnya yang demikian menjadi tanda-tanda kebesaran-Nya bagi orang-orang yang berfikir”.</p>
+          <footer>— Surat Ar-Rūm: 21</footer>
+        </blockquote>
       </div>
     </section>
+
+    
 
     <!-- Share & Footer -->
     <section id="share" class="section alt" aria-label="Bagikan Undangan">
@@ -274,13 +297,13 @@
       <li><a href="#cover" data-target="cover" aria-label="Sampul">🏠</a></li>
       <li><a href="#countdown" data-target="countdown" aria-label="Hitung Mundur">⏳</a></li>
       <li><a href="#couple" data-target="couple" aria-label="Mempelai">💑</a></li>
-      <li><a href="#story" data-target="story" aria-label="Kisah">❤️</a></li>
+      
       <li><a href="#event" data-target="event" aria-label="Acara">📅</a></li>
       <li><a href="#map" data-target="map" aria-label="Peta">📍</a></li>
       <li><a href="#gallery" data-target="gallery" aria-label="Galeri">🖼️</a></li>
       <li><a href="#rsvp" data-target="rsvp" aria-label="RSVP">✉️</a></li>
       <li><a href="#guestbook" data-target="guestbook" aria-label="Ucapan">📖</a></li>
-      <li><a href="#share" data-target="share" aria-label="Bagikan">🔗</a></li>
+      
     </ul>
   </nav>
 

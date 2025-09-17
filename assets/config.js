@@ -2,8 +2,15 @@
 // Edit only this file to update names, dates, locations, photos, links, and integrations
 window.INVITATION_CONFIG = {
   theme: {
-    primary: '#e3b584ff',
-    accent: '#670d4cff'
+    // Palet 3 warna (maroon, apricot, sage)
+    primary: '#8e1f49',   // maroon / wine
+    accent: '#f4ad52',    // apricot / peach
+    secondary: '#c5d9a7'  // sage green (opsional)
+  },
+  ui: {
+    showHealthBanner: false,
+    usePatternDecor: true,
+    hideFloatingUntilOpen: false
   },
   seo: {
     title: 'Undangan Pernikahan | Pinanti & Bayu',
@@ -19,14 +26,14 @@ window.INVITATION_CONFIG = {
       fullName: 'Retno Pinanti Khairunnisa',
       parents: 'Putri dari Bapak Karyono dan Ibu Rosyidah',
       origin: 'Jl. Puntodewo No.1 Panjunan RT 01 RW 01, Pati, Pati',
-      photoUrl: 'https://cdn.pixabay.com/photo/2017/08/26/07/38/wedding-2682431_1280.jpg'
+      photoUrl: 'assets/img/bride.png'
     },
     groom: {
       shortName: 'Bayu',
       fullName: 'Bayu Sidiq Munandar',
       parents: 'Putra dari Bapak Kirman & Ibu Narti',
       origin: 'Randulawang RT 00 RW 02, Butuh, Mojosongo, Boyolali',
-      photoUrl: 'https://cdn.pixabay.com/photo/2023/11/01/18/44/bride-8358737_1280.jpg'
+      photoUrl: 'assets/img/groom.png'
     }
   },
   event: {
@@ -58,16 +65,15 @@ window.INVITATION_CONFIG = {
     mapLink: 'https://maps.app.goo.gl/ZLQWopLDXZnLTbQQ8'
   },
   media: {
-    coverImage: 'https://cdn.pixabay.com/photo/2023/11/01/18/44/bride-8358737_1280.jpg',
-    ogImage: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=80',
-    musicUrl: 'https://cdn.pixabay.com/download/audio/2022/03/15/audio_2d41d0799c.mp3?filename=inspiring-116199.mp3',
+    coverImage: 'assets/img/bg-cover.png',
+    ogImage: 'assets/img/bg-cover.png',
+    musicUrl: 'assets/media/arabic-islamic-islam-music-360770.mp3',
+    patternImage: 'assets/img/Tropis 8.png',
     gallery: [
-      { src: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1600&q=80', thumb: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=70', alt: 'Cincin' },
-      { src: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80', thumb: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=70', alt: 'Buket' },
-      { src: 'https://images.unsplash.com/photo-1460364157752-926555421a7e?auto=format&fit=crop&w=1600&q=80', thumb: 'https://images.unsplash.com/photo-1460364157752-926555421a7e?auto=format&fit=crop&w=600&q=70', alt: 'Tangan pasangan' },
-      { src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1600&q=80', thumb: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=70', alt: 'Bunga' },
-      { src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1600&q=80', thumb: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=70', alt: 'Potret' },
-      { src: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1600&q=80', thumb: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=70', alt: 'Pasangan' }
+      { src: 'assets/img/bg-cover.png', thumb: 'assets/img/bg-cover.png', alt: 'Cincin' },
+      { src: 'assets/img/gallery1.png', thumb: 'assets/img/gallery1.png', alt: 'Buket' },
+      { src: 'assets/img/gallery2.png', thumb: 'assets/img/gallery2.png', alt: 'Tangan pasangan' },
+     
     ],
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     liveUrl: 'https://www.youtube.com/embed/live_stream?channel=YOUR_CHANNEL_ID'
@@ -84,8 +90,8 @@ window.INVITATION_CONFIG = {
   integrations: {
     whatsapp: { phone: '6281234567890' },
     googleSheets: {
-      rsvpEndpoint: '',
-      wishesEndpoint: ''
+      rsvpEndpoint: 'https://script.google.com/macros/s/AKfycbxTDsrr0UFUO8K9pPH7Y9LM83OqNDsr3Bh4VRqhxWemHtGAD5oz8nHNOaJhxz1RfTi9kg/exec',
+      wishesEndpoint: 'https://script.google.com/macros/s/AKfycbxTDsrr0UFUO8K9pPH7Y9LM83OqNDsr3Bh4VRqhxWemHtGAD5oz8nHNOaJhxz1RfTi9kg/exec'
     }
   }
 };

@@ -30,13 +30,18 @@ Konfigurasi Terpusat (tanpa edit HTML)
   - `integrations.googleSheets.{rsvpEndpoint,wishesEndpoint}`: URL Web App (Apps Script) untuk menyimpan ke Google Sheets.
 
 Open Invitation
-- Tombol “Buka Undangan” sekarang menggulir halus ke bagian Countdown dan memulai musik (setelah interaksi pengguna), bukan diam di cover.
+- Tombol "Buka Undangan" sekarang menggulir halus ke bagian Countdown dan memulai musik (setelah interaksi pengguna), bukan diam di cover.
+- Jika `ui.hideFloatingUntilOpen` aktif, tombol melayang (nav & back-to-top) baru terlihat setelah tombol ini diklik.
 
 Kustomisasi Penting
 - Countdown: atur di `config.js > event.countdownTarget`.
 - Google Calendar & ICS: atur di `config.js > event.calendar`.
 - Peta & link: `config.js > map`.
 - Video & Live: `config.js > media.videoUrl` dan `media.liveUrl`.
+- Cover & Pola Lokal: set `config.js > media.coverImage` ke `assets/img/Pinan&Bayu_Illustrasi.jpg` dan `media.patternImage` ke salah satu `assets/img/Tropis *.png` untuk latar bermotif halus.
+- Ornamen sudut section: aktifkan `config.js > ui.usePatternDecor` (default: true) untuk menampilkan motif Tropis di sudut section.
+- Sembunyikan tombol melayang hingga dibuka: `config.js > ui.hideFloatingUntilOpen` (default: true).
+- Tampilkan/Sembunyikan banner protokol: `config.js > ui.showHealthBanner`.
 - Share: gunakan tombol `Bagikan` (Web Share API), `Share WhatsApp`, dan `Salin Link`.
 - Banner protokol: dapat dihapus dari `index.html` jika tak diperlukan.
 
