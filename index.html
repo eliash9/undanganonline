@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Undangan Pernikahan | P & B</title>
+    <meta name="description" content="Undangan pernikahan A & B. Mohon doa restu dan kehadiran Anda di hari istimewa kami." />
+    <meta property="og:title" content="Undangan Pernikahan | A & B" />
+    <meta property="og:description" content="Mohon doa restu dan kehadiran Anda di hari istimewa kami." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=80" />
+    <meta property="og:url" content="" />
+    <link rel="icon" href="assets/img/monogram.svg" type="image/svg+xml" />
+    <!-- Optional: Google Fonts (Playfair Display + Inter). Replace or self-host if needed. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Health protocol banner (optional) -->
+    <div id="health-banner" class="banner hidden" role="region" aria-label="Protokol Kesehatan">
+      <div class="container">
+        <span>Mohon tetap menjaga kesehatan dan kebersihan selama acara.</span>
+        <button id="close-banner" class="btn btn-ghost" aria-label="Tutup banner">Tutup</button>
+      </div>
+    </div>
+
+    <!-- Cover / Header -->
+    <header id="cover" class="section cover" aria-label="Sampul Undangan">
+      <div class="overlay"></div>
+      <div class="cover-content">
+        <img src="assets/img/monogram.svg" alt="Monogram" class="monogram" />
+        <h1 class="names"><span id="brideName">Pinanti</span> & <span id="groomName">Bayu</span></h1>
+        <p class="date" id="weddingDateText">Sabtu, 11 Oktober 2025</p>
+        <button id="open-invitation" class="btn btn-primary">Buka Undangan</button>
+      </div>
+      <!-- Royalty-free music (Pixabay). Ganti link bila perlu. -->
+      <audio id="bg-music" preload="none" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_2d41d0799c.mp3?filename=inspiring-116199.mp3"></audio>
+      <button id="music-toggle" class="music-toggle" aria-label="Putar/jeda musik" title="Musik">&#x1F50A;</button>
+      <a href="#rsvp" class="floating-cta">RSVP</a>
+    </header>
+
+    <!-- Countdown -->
+    <section id="countdown" class="section" aria-label="Hitung Mundur">
+      <div class="container reveal">
+        <h2 class="title">Menuju Hari Bahagia</h2>
+        <div class="countdown-grid" data-target-date="2025-10-11T08:00:00+07:00">
+          <div class="time"><span id="d">00</span><small>Hari</small></div>
+          <div class="time"><span id="h">00</span><small>Jam</small></div>
+          <div class="time"><span id="m">00</span><small>Menit</small></div>
+          <div class="time"><span id="s">00</span><small>Detik</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Couple Profile -->
+    <section id="couple" class="section alt" aria-label="Profil Mempelai">
+      <div class="container reveal">
+        <h2 class="title">Mempelai</h2>
+        <div class="couple-grid">
+          <article class="person">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Foto mempelai wanita (stock Unsplash)" loading="lazy" />
+            <h3>Retno Pinanti Khairunnisa</h3>
+            <p>Putri dari Bapak Karyono dan Ibu Rosyidah</p>
+            <p class="muted">Jl. Puntodewo No.1 Panjunan RT 01 RW 01, Pati, Pati</p>
+          </article>
+          <article class="person">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80" alt="Foto mempelai pria (stock Unsplash)" loading="lazy" />
+            <h3>Bayu Sidiq Munandar</h3>
+            <p>Putra dari Bapak Kirman & Ibu Narti</p>
+            <p class="muted">Randulawang RT 00 RW 02, Butuh, Mojosongo, Boyolali </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Love Story -->
+    <section id="story" class="section" aria-label="Love Story">
+      <div class="container reveal">
+        <h2 class="title">Kisah Kami</h2>
+        <div class="timeline">
+          <div class="event">
+            <span class="dot"></span>
+            <div class="content">
+              <h4>Pertemuan Pertama</h4>
+              <time>2019</time>
+              <p>Bertemu di sebuah acara komunitas dan saling bertukar cerita.</p>
+            </div>
+          </div>
+          <div class="event">
+            <span class="dot"></span>
+            <div class="content">
+              <h4>Komitmen</h4>
+              <time>2022</time>
+              <p>Memutuskan untuk melangkah bersama ke jenjang yang lebih serius.</p>
+            </div>
+          </div>
+          <div class="event">
+            <span class="dot"></span>
+            <div class="content">
+              <h4>Lamaran</h4>
+              <time>2024</time>
+              <p>Prosesi lamaran sederhana bersama keluarga terdekat.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Event Details -->
+    <section id="event" class="section alt" aria-label="Detail Acara">
+      <div class="container reveal">
+        <h2 class="title">Detail Acara</h2>
+        <div class="event-grid">
+          <div class="card">
+            <h3>Akad Nikah</h3>
+            <p><strong>Tanggal:</strong> Sabtu, 11 Oktober 2025</p>
+            <p><strong>Waktu:</strong> 10.00-11.00 WIB</p>
+            <p><strong>Tempat:</strong> Hotel New Merdeka Pati</p>
+            <p class="muted">Jl. Diponehoro No. 69 Pati</p>
+          </div>
+          <div class="card">
+            <h3>Resepsi</h3>
+            <p><strong>Tanggal:</strong> Sabtu, 11 Oktober 2025</p>
+            <p><strong>Waktu:</strong> 11.00 - 13.00 WIB</p>
+            <p><strong>Tempat:</strong> Hotel New Merdeka Pati</p>
+            <p class="muted">Jl. Diponehoro No. 69 Pati</p>
+          </div>
+        </div>
+        <address class="venue">
+          <strong>Alamat:</strong> Jl. Diponehoro No. 69 Pati
+        </address>
+        <div class="actions">
+          <a id="gcal-link" class="btn btn-primary" href="#">Tambah ke Google Calendar</a>
+          <button id="ics-download" class="btn">Simpan ke Kalender (ICS)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map -->
+    <section id="map" class="section" aria-label="Peta Lokasi">
+      <div class="container reveal">
+        <h2 class="title">Peta Lokasi</h2>
+        <div class="map-embed">
+          <!-- Ganti src di bawah dengan embed map lokasi Anda -->
+           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1217.481430867941!2d111.03372765772274!3d-6.74792369220553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70d24d7f5b7a67%3A0xf5baa719f9d8810b!2sNew%20Merdeka%20Hotel%20Pati!5e1!3m2!1sid!2sid!4v1758091390758!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+         
+        </div>
+        <a class="btn btn-ghost" target="_blank" rel="noopener noreferrer" href="https://maps.app.goo.gl/ZLQWopLDXZnLTbQQ8">Buka di Google Maps</a>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="section alt" aria-label="Galeri Foto">
+      <div class="container reveal">
+        <h2 class="title">Galeri</h2>
+        <div class="gallery-grid" id="galleryGrid">
+          <a href="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=70" alt="Cincin (Unsplash)" loading="lazy"></a>
+          <a href="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=70" alt="Buket (Unsplash)" loading="lazy"></a>
+          <a href="https://images.unsplash.com/photo-1460364157752-926555421a7e?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1460364157752-926555421a7e?auto=format&fit=crop&w=600&q=70" alt="Tangan pasangan (Unsplash)" loading="lazy"></a>
+          <a href="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=70" alt="Bunga (Unsplash)" loading="lazy"></a>
+          <a href="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=70" alt="Potret (Unsplash)" loading="lazy"></a>
+          <a href="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1600&q=80"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=70" alt="Pasangan (Unsplash)" loading="lazy"></a>
+        </div>
+        <!-- Optional video -->
+        <div class="video-wrap">
+          <!-- Ganti link YouTube/Vimeo bila ada video prewedding -->
+          <iframe class="video" title="Video Prewedding" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section id="rsvp" class="section" aria-label="Konfirmasi Kehadiran">
+      <div class="container reveal">
+        <h2 class="title">Konfirmasi Kehadiran</h2>
+        <form id="rsvpForm" class="card form">
+          <div class="row">
+            <label>Nama
+              <input type="text" name="name" required placeholder="Nama lengkap" />
+            </label>
+            <label>Kontak (WA/Email)
+              <input type="text" name="contact" required placeholder="0812xxxx / email" />
+            </label>
+          </div>
+          <div class="row">
+            <label>Jumlah Tamu
+              <input type="number" name="guests" min="1" value="1" />
+            </label>
+            <label>Status Kehadiran
+              <select name="attendance">
+                <option value="hadir">Hadir</option>
+                <option value="tidak">Tidak Hadir</option>
+                <option value="ragu">Masih Ragu</option>
+              </select>
+            </label>
+          </div>
+          <label>Catatan
+            <textarea name="note" rows="3" placeholder="Ucapan/permintaan khusus"></textarea>
+          </label>
+          <div class="actions">
+            <button type="submit" class="btn btn-primary">Kirim RSVP</button>
+            <a id="wa-share-rsvp" class="btn btn-ghost" target="_blank" rel="noopener">Kirim via WhatsApp</a>
+          </div>
+          <p id="rsvpStatus" class="status" role="status" aria-live="polite"></p>
+        </form>
+        <details class="card small">
+          <summary>Lihat daftar RSVP tersimpan (perangkat ini)</summary>
+          <ul id="rsvpList" class="list"></ul>
+          <button id="clearRsvp" class="btn btn-danger">Hapus Data Lokal</button>
+        </details>
+      </div>
+    </section>
+
+    <!-- Guestbook / Ucapan -->
+    <section id="guestbook" class="section alt" aria-label="Buku Tamu Ucapan">
+      <div class="container reveal">
+        <h2 class="title">Buku Ucapan</h2>
+        <form id="wishForm" class="card form">
+          <div class="row">
+            <label>Nama
+              <input type="text" name="name" required placeholder="Nama Anda" />
+            </label>
+            <label>Kota/Instansi
+              <input type="text" name="from" placeholder="Asal" />
+            </label>
+          </div>
+          <label>Ucapan
+            <textarea name="message" rows="3" required placeholder="Tulis doa/ucapan"></textarea>
+          </label>
+          <div class="actions">
+            <button type="submit" class="btn btn-primary">Kirim Ucapan</button>
+          </div>
+          <p id="wishStatus" class="status" role="status" aria-live="polite"></p>
+        </form>
+        <ul id="wishes" class="wishes"></ul>
+      </div>
+    </section>
+
+    <!-- Live Streaming (optional) -->
+    <section id="live" class="section" aria-label="Live Streaming">
+      <div class="container reveal">
+        <h2 class="title">Live Streaming</h2>
+        <p class="muted">Jika berhalangan hadir, silakan bergabung melalui link berikut saat acara berlangsung.</p>
+        <div class="video-wrap">
+          <!-- Ganti src jika ada link live -->
+          <iframe class="video" title="Live Streaming" src="https://www.youtube.com/embed/live_stream?channel=YOUR_CHANNEL_ID" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Share & Footer -->
+    <section id="share" class="section alt" aria-label="Bagikan Undangan">
+      <div class="container reveal">
+        <h2 class="title">Bagikan Undangan</h2>
+        <div class="share">
+          <button id="shareBtn" class="btn btn-primary">Bagikan</button>
+          <a id="waShareBtn" class="btn" target="_blank" rel="noopener">Share WhatsApp</a>
+          <button id="copyLinkBtn" class="btn">Salin Link</button>
+          <a id="igOpenBtn" class="btn btn-ghost" target="_blank" rel="noopener" href="https://instagram.com/">Buka Instagram</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" aria-label="Penutup & Kontak">
+      <div class="container">
+        <p>Terima kasih atas doa dan kehadiran Anda.</p>
+        <p class="muted">Kontak keluarga: 0812-XXXX-XXXX | IG: @anisa.bima</p>
+        <small>&copy; <span id="year"></span> A & B</small>
+        <p class="muted" style="margin-top:6px; font-size:.85rem">Foto: Unsplash · Musik: Pixabay (royalty‑free)</p>
+      </div>
+      <button id="backToTop" class="back-to-top" aria-label="Kembali ke atas">&#8593;</button>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Pratinjau Gambar">
+      <button id="lightboxClose" class="lightbox-close" aria-label="Tutup">&times;</button>
+      <img id="lightboxImg" alt="Pratinjau Galeri"/>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+  </html>
