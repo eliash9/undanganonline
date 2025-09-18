@@ -59,6 +59,25 @@
   });
   musicBtn?.addEventListener('click', ()=> toggleMusic());
 
+  // Personalized guest greeting via ?to=
+  (function initGuestGreeting(){
+    try{
+      const params = new URLSearchParams(window.location.search);
+      const raw = params.get('to');
+      if(!raw) return;
+      let name = raw.replace(/\+/g,' ');
+      try { name = decodeURIComponent(name); } catch(_) {}
+      name = name.replace(/_/g,' ').trim();
+      if(!name) return;
+      const box = document.getElementById('guestBox');
+      const el = document.getElementById('guestName');
+      const note = document.getElementById('guestNote');
+      if(el){ el.textContent = name; }
+      box?.classList.remove('hidden');
+      note?.classList.remove('hidden');
+    }catch(_){ /* ignore */ }
+  })();
+
   // Apply dynamic configuration
   (function applyConfig(){
     if(!CFG) return;
