@@ -162,7 +162,16 @@ input, select, textarea{width:100%; padding:10px 12px; border:1px solid #e6ded4;
   .floating-nav{background:rgba(255,255,255,.55); backdrop-filter: blur(8px) saturate(1.2)}
 }
 @media (max-width:520px){
-  .floating-nav{bottom: calc(16px + env(safe-area-inset-bottom, 0px));}
+  .floating-nav{bottom: calc(16px + env(safe-area-inset-bottom, 0px)); padding:6px 8px}
+  .floating-nav ul{gap:6px}
+  .floating-nav a{width:36px; height:36px; font-size:16px}
+}
+
+/* Extra-small devices */
+@media (max-width:380px){
+  .floating-nav{padding:4px 6px}
+  .floating-nav ul{gap:4px}
+  .floating-nav a{width:32px; height:32px; font-size:14px}
 }
 
 /* Additions: batik pattern overlay, ornaments, and text animations */
