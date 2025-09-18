@@ -93,5 +93,18 @@ window.INVITATION_CONFIG = {
       rsvpEndpoint: 'https://script.google.com/macros/s/AKfycbwbRaTUQxR78zD3V_7QKaH7BFHUX_UKq6cbArivGwVS3O7ZiF9PIYUqdDWkzDJ_4pHA/exec',
       wishesEndpoint: 'https://script.google.com/macros/s/AKfycbwbRaTUQxR78zD3V_7QKaH7BFHUX_UKq6cbArivGwVS3O7ZiF9PIYUqdDWkzDJ_4pHA/exec'
     }
+  },
+  gift: {
+    title: 'Kirim Hadiah',
+    note: 'Tanpa mengurangi rasa hormat, bagi yang ingin mengirim tanda kasih dapat melalui QRIS, rekening bank, atau e‑wallet berikut.',
+    qris: { image: 'assets/img/qris.png', label: 'QRIS a.n. Pinanti & Bayu' },
+    banks: [
+      { bank: 'BCA', account: '1234567890', owner: 'Retno Pinanti K' },
+      { bank: 'BRI', account: '0012-345-678-901', owner: 'Bayu Sidiq M' }
+    ],
+    ewallets: [
+      { name: 'OVO', number: '0812-3456-7890', owner: 'Pinanti' },
+      { name: 'DANA', number: '0813-2222-3333', owner: 'Bayu' }
+    ]
   }
 };

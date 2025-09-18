@@ -229,3 +229,28 @@ body:not(.invitation-open) .back-to-top{
 .inv-decor.right{right:-10px; bottom:-6px; transform:rotate(6deg)}
 .inv-note{text-align:center; color:#6a5a48; max-width:760px; margin:10px auto 0}
 @media (max-width:640px){ .inv-times{grid-template-columns:1fr} }
+
+/* Gift / Payment */
+.pay-grid{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px}
+.pay-card h3{margin:0 0 8px; color:var(--brand-maroon)}
+.pay-list{list-style:none; padding:0; margin:0; display:grid; gap:8px}
+.pay-item{display:flex; align-items:center; justify-content:space-between; gap:10px; border:1px dashed #e6ded4; border-radius:10px; padding:10px 12px; background:#fff}
+.pay-meta{display:flex; flex-direction:column}
+.pay-meta small{color:var(--muted)}
+.copy-btn{white-space:nowrap}
+.qris-wrap{display:grid; place-items:center; margin:6px 0 10px}
+.qris-wrap img{max-width:220px; width:100%; height:auto; border-radius:12px; border:1px solid #efe4d7}
+@media (max-width: 900px){ .pay-grid{grid-template-columns:1fr} }
+
+/* Brand badges */
+.brand-badge{display:inline-flex; align-items:center; justify-content:center; min-width:44px; height:26px; padding:0 10px; border-radius:999px; font-weight:700; font-size:.8rem; color:#fff; letter-spacing:.2px}
+.brand-ovo{background:#4a2e83}
+.brand-dana{background:#00a2ff}
+.brand-gopay{background:#00aef0}
+.brand-shopeepay{background:#ee4d2d}
+.brand-linkaja{background:#d6001c}
+.brand-bca{background:#1a4ead}
+.brand-bri{background:#0079c1}
+.brand-bni{background:#f37021}
+.brand-mandiri{background:#003a70}
+.brand-generic{background:#888}

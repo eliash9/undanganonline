@@ -433,6 +433,77 @@
     });
   })();
 
+  // Gift / Payment
+  (function initGift(){
+    const cfg = CFG?.gift; if(!cfg) return;
+    const noteEl = document.getElementById('giftNote');
+    if(cfg.note && noteEl) noteEl.textContent = cfg.note;
+    // QRIS
+    const qrisImg = document.getElementById('qrisImg');
+    const qrisLabel = document.getElementById('qrisLabel');
+    const qrisCard = document.getElementById('qrisCard');
+    if(cfg.qris?.image && qrisImg){ qrisImg.src = cfg.qris.image; } else { qrisCard?.remove(); }
+    if(cfg.qris?.label && qrisLabel){ qrisLabel.textContent = cfg.qris.label; }
+    // Banks
+    const bankList = document.getElementById('bankList');
+    if(bankList && Array.isArray(cfg.banks)){
+      bankList.innerHTML='';
+      cfg.banks.forEach(b=>{
+        const li = document.createElement('li'); li.className='pay-item';
+        const badge = document.createElement('span'); badge.className = `brand-badge ${brandClass(b.bank)} `; badge.textContent = (b.bank||'BANK').toUpperCase();
+        const meta = document.createElement('div'); meta.className='pay-meta';
+        const title = document.createElement('strong'); title.textContent = `${b.bank} • ${b.account}`;
+        const small = document.createElement('small'); small.textContent = b.owner||'';
+        meta.append(title, small);
+        const btn = document.createElement('button'); btn.className='btn copy-btn'; btn.textContent='Salin'; btn.setAttribute('data-copy', b.account);
+        li.append(badge, meta, btn); bankList.appendChild(li);
+      });
+    }
+    // E‑wallets
+    const ewList = document.getElementById('ewalletList');
+    if(ewList && Array.isArray(cfg.ewallets)){
+      ewList.innerHTML='';
+      cfg.ewallets.forEach(w=>{
+        const li = document.createElement('li'); li.className='pay-item';
+        const badge = document.createElement('span'); badge.className = `brand-badge ${brandClass(w.name)}`; badge.textContent = (w.name||'WALLET').toUpperCase();
+        const meta = document.createElement('div'); meta.className='pay-meta';
+        const title = document.createElement('strong'); title.textContent = `${w.name} • ${w.number}`;
+        const small = document.createElement('small'); small.textContent = w.owner||'';
+        meta.append(title, small);
+        const btn = document.createElement('button'); btn.className='btn copy-btn'; btn.textContent='Salin'; btn.setAttribute('data-copy', w.number);
+        li.append(badge, meta, btn); ewList.appendChild(li);
+      });
+    }
+    // Copy handlers
+    document.addEventListener('click', async(e)=>{
+      const t = e.target; if(!(t instanceof HTMLElement)) return;
+      if(t.classList.contains('copy-btn')){
+        const text = t.getAttribute('data-copy')||''; if(!text) return;
+        try{ await navigator.clipboard.writeText(text); t.textContent='Tersalin ✓'; setTimeout(()=>t.textContent='Salin', 1800); }catch(_){ /* ignore */ }
+      }
+      if(t.id==='qrisView' && qrisImg?.src){
+        const modal = document.getElementById('lightbox'); const img = document.getElementById('lightboxImg');
+        if(modal && img){ img.src = qrisImg.src; modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); }
+      }
+      if(t.id==='qrisSave' && qrisImg?.src){
+        const a = document.createElement('a'); a.href = qrisImg.src; a.download = 'qris.png'; document.body.appendChild(a); a.click(); a.remove();
+      }
+    });
+    function brandClass(label){
+      const x = (label||'').toString().toLowerCase().replace(/\s+/g,'');
+      if(x.includes('ovo')) return 'brand-ovo';
+      if(x.includes('dana')) return 'brand-dana';
+      if(x.includes('gopay')||x.includes('gojek')) return 'brand-gopay';
+      if(x.includes('shopee')) return 'brand-shopeepay';
+      if(x.includes('linkaja')) return 'brand-linkaja';
+      if(x.includes('bca')) return 'brand-bca';
+      if(x.includes('bri')) return 'brand-bri';
+      if(x.includes('bni')) return 'brand-bni';
+      if(x.includes('mandiri')) return 'brand-mandiri';
+      return 'brand-generic';
+    }
+  })();
+
   // Year
   const y = $('#year'); if(y) y.textContent = new Date().getFullYear();
 })();
